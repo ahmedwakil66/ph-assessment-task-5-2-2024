@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* <MonitorAuthSate /> */}
+        <MonitorAuthSate />
         <AntdRegistry>{children}</AntdRegistry>
       </body>
     </html>

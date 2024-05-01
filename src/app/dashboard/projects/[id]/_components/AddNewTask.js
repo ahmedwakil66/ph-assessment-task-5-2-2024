@@ -113,7 +113,7 @@ const AddNewTask = ({ projectId }) => {
                     <DatePicker
                         placeholder='Select deadline'
                         onChange={onChangeDate}
-                        showTime
+                        // showTime
                     />
                     <div>
                         <p className='font-semibold mb-3'>
@@ -128,7 +128,7 @@ const AddNewTask = ({ projectId }) => {
                     </div>
 
                     <Alert type='warning' message='All fields are required!' showIcon />
-                    <Alert type='warning' message='Mocking Only! Changes will be lost if you leave/reload this page.' showIcon />
+                    <Alert type='warning' message='Mocking Only! Changes will be lost if you reload this page.' showIcon />
                 </div>
             </Modal>
         </div>

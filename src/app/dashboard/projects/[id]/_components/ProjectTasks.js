@@ -7,6 +7,9 @@ import useTasksStore from '@/store/useTasksStore';
 import ProjectTasksDisplay from './ProjectTasksDisplay';
 import useTeamMembersStore from '@/store/useTeamMembersStore';
 
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { DndProvider } from 'react-dnd';
+
 const ProjectTasks = ({ allTasks }) => {
     const tasks = useTasksStore((state) => state.tasks);
     const teamMembers = useTeamMembersStore((state) => state.members);
@@ -34,7 +37,7 @@ const ProjectTasks = ({ allTasks }) => {
     const isSearching = searchKey.length > 0;
 
     // filter logic
-    const [filteredTasks, setFilteredTasks] = useState([]); console.log(filteredTasks);
+    const [filteredTasks, setFilteredTasks] = useState([]);
     const [filterType, setFilterType] = useState('status');
     const [filterValue, setFilterValue] = useState('');
 
@@ -127,7 +130,9 @@ const ProjectTasks = ({ allTasks }) => {
 
             <br />
             {/* Display intended tasks */}
-            <ProjectTasksDisplay tasks={showState === 'SEARCH' ? searchedTasks : showState === 'FILTER' ? filteredTasks : tasks} />
+            <DndProvider backend={HTML5Backend}>
+                <ProjectTasksDisplay tasks={showState === 'SEARCH' ? searchedTasks : showState === 'FILTER' ? filteredTasks : tasks} />
+            </DndProvider>
         </div>
     );
 };

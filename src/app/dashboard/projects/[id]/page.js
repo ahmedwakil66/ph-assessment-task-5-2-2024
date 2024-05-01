@@ -16,9 +16,6 @@ const fetcher = async (id) => {
 // (e.g., To Do, In Progress, Done) using Zustand to manage state.
 // Because of this rule, from here I will have to mix tanstack and zustand
 // which might make the code complex and less performant.
-// Tanstack's cache management was enough to track task status
-// anyway, I am just saying, not complaining :)
-
 
 const ProjectDetailsPage = ({ params }) => {
     const { isLoading, isError, data } = useQuery(
@@ -90,7 +87,7 @@ const ProjectDetailsPage = ({ params }) => {
             <ProjectTasks allTasks={tasks} />
 
             {/* Recent Activities */}
-            <br />
+            <br /> <br />
             <ProjectRecentActivities recentActivities={recentActivities} />
 
 
