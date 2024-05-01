@@ -12,6 +12,14 @@ const fetcher = async (id) => {
     return response.json();
 }
 
+// Given task rule: Implement a drag-and-drop feature to change the status of tasks 
+// (e.g., To Do, In Progress, Done) using Zustand to manage state.
+// Because of this rule, from here I will have to mix tanstack and zustand
+// which might make the code complex and less performant.
+// Tanstack's cache management was enough to track task status
+// anyway, I am just saying, not complaining :)
+
+
 const ProjectDetailsPage = ({ params }) => {
     const { isLoading, isError, data } = useQuery(
         ['projects', params.id],
@@ -76,10 +84,10 @@ const ProjectDetailsPage = ({ params }) => {
                 <Typography.Title level={4}>
                     Project Tasks
                 </Typography.Title>
-                <AddNewTask />
+                <AddNewTask projectId={params.id}/>
             </div>
             <SetInitialTasks initialTasks={tasks} teamMembers={teamMembers} />
-            <ProjectTasks defaultTasks={tasks} />
+            <ProjectTasks allTasks={tasks} />
 
             {/* Recent Activities */}
             <br />

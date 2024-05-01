@@ -64,7 +64,7 @@ const ProjectTasksDisplay = ({ tasks }) => {
 
     return (
         <div className='flex flex-col gap-6'>
-            {tasks.map(task => <ProjectTask key={task.id} task={task} />)}
+            {tasks.sort((a, b) => b.deadline - a.deadline).map(task => <ProjectTask key={task.id} task={task} />)}
         </div>
     );
 };

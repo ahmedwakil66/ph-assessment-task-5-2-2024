@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import useTasksStore from '@/store/useTasksStore';
 import ProjectTasksDisplay from './ProjectTasksDisplay';
 
-const ProjectTasks = ({ defaultTasks }) => {
+const ProjectTasks = ({ allTasks }) => {
     const tasks = useTasksStore((state) => state.tasks);
     const [searchedTasks, setSearchedTasks] = useState([]);
     const [searchKey, setSearchKey] = useState('');
