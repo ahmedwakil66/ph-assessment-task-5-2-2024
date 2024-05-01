@@ -3,6 +3,8 @@ import { Avatar, List, Typography } from 'antd';
 import { useQuery } from 'react-query';
 import Image from 'next/image';
 import ProjectRecentActivities from './_components/ProjectRecentActivities';
+import ProjectTasks from './_components/ProjectTasks';
+import SetInitialTasks from './_components/SetInitialTasks';
 
 const fetcher = async (id) => {
     const response = await fetch(`/api/data?projectId=${id}`);
@@ -10,12 +12,16 @@ const fetcher = async (id) => {
 }
 
 const ProjectDetailsPage = ({ params }) => {
-    const { isLoading, isError, data } = useQuery(['projects', params.id], () => fetcher(params.id), { staleTime: 3600000, cacheTime: 3600000 });
+    const { isLoading, isError, data } = useQuery(
+        ['projects', params.id],
+        () => fetcher(params.id),
+        { staleTime: 3600000, cacheTime: 3600000 }
+    );
 
     if (isLoading) return <p>Loading...</p>
     if (isError || (data && data.status !== 'success')) return <p>Error fetching data</p>
 
-    const { name, thumb, description, technologies, other_technologies, teamMembers, recentActivities } = data.data;
+    const { name, thumb, description, technologies, other_technologies, teamMembers, tasks, recentActivities } = data.data;
 
     return (
         <div className='max-w-3xl mx-auto'>
@@ -30,6 +36,7 @@ const ProjectDetailsPage = ({ params }) => {
                 src={thumb}
                 width={1280}
                 height={720}
+                priority
             />
 
             <br />
@@ -61,6 +68,14 @@ const ProjectDetailsPage = ({ params }) => {
                     </List.Item>
                 )}
             />
+
+            {/* Project Tasks */}
+            <br />
+            <Typography.Title level={4}>
+                Project Tasks
+            </Typography.Title>
+            <SetInitialTasks initialTasks={tasks} teamMembers={teamMembers}/>
+            <ProjectTasks defaultTasks={tasks} />
 
             {/* Recent Activities */}
             <br />

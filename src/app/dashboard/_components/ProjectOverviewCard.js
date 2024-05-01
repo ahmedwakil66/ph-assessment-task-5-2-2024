@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { EditOutlined, DeleteOutlined, EyeOutlined } from '@ant-design/icons';
-import { Avatar, Card } from 'antd';
+import { Alert, Avatar, Card, Modal, Tooltip } from 'antd';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { useMutation, useQueryClient } from 'react-query';
 const { Meta } = Card;
+
+const mockDelete = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
 const ProjectOverviewCard = ({ project }) => {
     const router = useRouter();
+    const queryClient = useQueryClient();
+    const [delProjectId, setDelProjectId] = useState(null);
+
+    const mutation = useMutation(mockDelete, {
+        onSuccess: () => {
+            queryClient.setQueryData('projects', (oldData) => ({
+                status: 'success',
+                data: oldData.data.filter(oldProject => oldProject.id !== delProjectId),
+            }))
+        }
+    })
+
+    const closeModal = () => setDelProjectId(null);
     const goToProjectPage = () => router.push(`/dashboard/projects/${project.id}`);
 
     return (
@@ -24,18 +40,44 @@ const ProjectOverviewCard = ({ project }) => {
                     />
                 }
                 actions={[
-                    <EyeOutlined key="view" onClick={goToProjectPage} />,
-                    <EditOutlined key="edit" />,
-                    <DeleteOutlined key="delete" />,
+                    <Tooltip key="View" title="View">
+                        <EyeOutlined onClick={goToProjectPage} />
+                    </Tooltip>,
+                    <Tooltip key="edit" title="Edit">
+                        <EditOutlined />
+                    </Tooltip>,
+                    <Tooltip key="delete" title="Delete">
+                       <DeleteOutlined onClick={() => setDelProjectId(project.id)} />
+                    </Tooltip>,
                 ]}
             >
                 <Meta
-                    // className='flex-1'
                     avatar={<Avatar src={`https://ucarecdn.com/f9238824-18b3-4ea9-b2d0-a6d5064b6563/-/preview/100x100/`} />}
                     title={project.name}
                     description={project.short_description}
                 />
             </Card>
+
+            <Modal
+                title={`Do you really want to delete ${project.name}?`}
+                okText="Delete"
+                okType='danger'
+                closeIcon={null}
+                open={delProjectId}
+                onOk={() => mutation.mutate()}
+                onCancel={closeModal}
+                maskClosable={false}
+                okButtonProps={{ disabled: mutation.isLoading }}
+                cancelButtonProps={{ disabled: mutation.isLoading }}
+            >
+                <br />
+                <Alert
+                    message="Warning"
+                    description="Deleting is only for mocking purpose. If you reload this page or take any action that cause a refetch, your action will be reverted!"
+                    type="warning"
+                    showIcon
+                />
+            </Modal>
         </div>
     )
 };

@@ -36,14 +36,16 @@ export const projectsData = [
                 "title": "Make responsive",
                 "deadline": 1714508476826,
                 "description": "We have to make the entire website responsive for small and large screens.",
-                "assignees": ["ABC11", "ABC33"]
+                "assignees": ["ABC11", "ABC33"],
+                "status": "PENDING"
             },
             {
                 "id": "XLD645",
                 "title": "Make animated",
                 "deadline": 1714507476826,
                 "description": "We have to use some animated effects in our website to make it feel lively.",
-                "assignees": ["ABC22", "ABC44"]
+                "assignees": ["ABC22", "ABC44"],
+                "status": "PENDING"
             },
         ],
         "recentActivities": [
@@ -99,14 +101,16 @@ export const projectsData = [
                 "title": "Make responsive",
                 "deadline": 1714508476826,
                 "description": "We have to make the entire website responsive for small and large screens.",
-                "assignees": ["ABC11", "ABC33"]
+                "assignees": ["ABC11", "ABC22"],
+                "status": "PENDING"
             },
             {
                 "id": "XLD645",
                 "title": "Make animated",
                 "deadline": 1714507476826,
                 "description": "We have to use some animated effects in our website to make it feel lively.",
-                "assignees": ["ABC22", "ABC44"]
+                "assignees": ["ABC33", "ABC44"],
+                "status": "PENDING"
             },
         ],
         "recentActivities": [
@@ -162,14 +166,16 @@ export const projectsData = [
                 "title": "Make responsive",
                 "deadline": 1714508476826,
                 "description": "We have to make the entire website responsive for small and large screens.",
-                "assignees": ["ABC11", "ABC33"]
+                "assignees": ["ABC11", "ABC33"],
+                "status": "PENDING"
             },
             {
                 "id": "XLD645",
                 "title": "Make animated",
                 "deadline": 1714507476826,
                 "description": "We have to use some animated effects in our website to make it feel lively.",
-                "assignees": ["ABC22", "ABC44"]
+                "assignees": ["ABC22", "ABC44"],
+                "status": "PENDING"
             },
         ],
         "recentActivities": [
@@ -225,14 +231,16 @@ export const projectsData = [
                 "title": "Make responsive",
                 "deadline": 1714508476826,
                 "description": "We have to make the entire website responsive for small and large screens.",
-                "assignees": ["ABC11", "ABC33"]
+                "assignees": ["ABC11", "ABC33"],
+                "status": "PENDING"
             },
             {
                 "id": "XLD645",
                 "title": "Make animated",
                 "deadline": 1714507476826,
                 "description": "We have to use some animated effects in our website to make it feel lively.",
-                "assignees": ["ABC22", "ABC44"]
+                "assignees": ["ABC22", "ABC44"],
+                "status": "PENDING"
             },
         ],
         "recentActivities": [
@@ -288,14 +296,16 @@ export const projectsData = [
                 "title": "Make responsive",
                 "deadline": 1714508476826,
                 "description": "We have to make the entire website responsive for small and large screens.",
-                "assignees": ["ABC11", "ABC33"]
+                "assignees": ["ABC11", "ABC33"],
+                "status": "PENDING"
             },
             {
                 "id": "XLD645",
                 "title": "Make animated",
                 "deadline": 1714507476826,
                 "description": "We have to use some animated effects in our website to make it feel lively.",
-                "assignees": ["ABC22", "ABC44"]
+                "assignees": ["ABC22", "ABC44"],
+                "status": "PENDING"
             },
         ],
         "recentActivities": [

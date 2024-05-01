@@ -18,9 +18,9 @@ const DashboardPage = () => {
             <Typography.Title level={2}>
                 Overview Of All Projects
             </Typography.Title>
-            {isLoading && <p>Loading</p>}
+            {isLoading && <p>Loading...</p>}
             {isError && <p>Error fetching data</p>}
-            {data && data.status !== 'success' && <p>Error fetching data, inter server error</p>}
+            {data && data.status !== 'success' && <p>Error fetching data, internal server error</p>}
             {data && data.status === 'success' && (
                 <div className='flex flex-wrap'>
                     {data.data.map(project => <ProjectOverviewCard key={project.id} project={project}/>)}

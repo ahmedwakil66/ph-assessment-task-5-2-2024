@@ -3,16 +3,25 @@ import React, { useState } from 'react';
 import { Alert, Modal, Typography } from 'antd';
 import { Button, Form, Input } from 'antd';
 import { useRouter } from 'next/navigation';
+import useAuthStore from '@/store/useAuthStore';
+
+const mockLoading = async () => new Promise((resolve) => setTimeout(resolve, 1000));
 
 const SignInPage = () => {
     const router = useRouter();
     const [sucMsg, setSucMsg] = useState('');
     const [errMsg, setErrMsg] = useState('');
+    const [loading, setLoading] = useState(false);
+    const assignAuth = useAuthStore((state) => state.assignAuth);
 
     const closeModal = () => setErrMsg('');
 
-    const onFinish = (values) => {
+    const onFinish = async(values) => {
+        setLoading(true);
+        await mockLoading();
+        setLoading(false);
         if (values.username === 'admin' && values.password === '12345') {
+            assignAuth();
             setSucMsg('Sign in success! Redirecting...');
             setTimeout(() => { router.push('/dashboard') }, 700)
         } else {
@@ -83,8 +92,8 @@ const SignInPage = () => {
                                 </Form.Item>
 
                                 <Form.Item>
-                                    <Button type="primary" htmlType="submit" block className='mt-5'>
-                                        Sign In
+                                    <Button type="primary" htmlType="submit" block className='mt-5' disabled={loading}>
+                                        {loading ? 'Signing in...' : 'Sign In'}
                                     </Button>
                                 </Form.Item>
                             </Form>
@@ -94,7 +103,12 @@ const SignInPage = () => {
             </div>
 
             {/* Error message modal */}
-            <Modal title="Error..! Invalid credential." open={errMsg !== ''} onOk={closeModal} onCancel={closeModal}>
+            <Modal
+                title="Error..! Invalid credential."
+                open={errMsg !== ''}
+                onOk={closeModal}
+                onCancel={closeModal}
+            >
                 {errMsg}
             </Modal>
         </div>
