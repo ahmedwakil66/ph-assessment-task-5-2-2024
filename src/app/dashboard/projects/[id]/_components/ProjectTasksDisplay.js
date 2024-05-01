@@ -22,7 +22,11 @@ const ProjectTask = ({ task }) => {
                                 <>
                                     <Text className='font-semibold'>Description: </Text>
                                     <Text>{task.description}</Text>
-                                </> <br />
+                                </> 
+                                <div className='mt-2'>
+                                    <Text className='font-semibold'>Status: </Text>
+                                    <Text>{task.status}</Text>
+                                </div>
                                 <div className='mt-2'>
                                     <Text className='font-semibold'>Deadline: </Text>
                                     {new Date(task.deadline).toLocaleString().split(',')[1]},&nbsp;
