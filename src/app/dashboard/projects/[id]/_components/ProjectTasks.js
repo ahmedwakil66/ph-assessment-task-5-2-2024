@@ -10,7 +10,7 @@ import useTeamMembersStore from '@/store/useTeamMembersStore';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
 
-const ProjectTasks = ({ allTasks }) => {
+const ProjectTasks = ({ allTasks, projectId }) => {
     const tasks = useTasksStore((state) => state.tasks);
     const teamMembers = useTeamMembersStore((state) => state.members);
     const [showState, setShowState] = useState('');
@@ -131,7 +131,10 @@ const ProjectTasks = ({ allTasks }) => {
             <br />
             {/* Display intended tasks */}
             <DndProvider backend={HTML5Backend}>
-                <ProjectTasksDisplay tasks={showState === 'SEARCH' ? searchedTasks : showState === 'FILTER' ? filteredTasks : tasks} />
+                <ProjectTasksDisplay
+                    projectId={projectId}
+                    tasks={showState === 'SEARCH' ? searchedTasks : showState === 'FILTER' ? filteredTasks : tasks}
+                />
             </DndProvider>
         </div>
     );

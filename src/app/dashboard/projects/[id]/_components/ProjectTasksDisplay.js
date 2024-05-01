@@ -5,11 +5,14 @@ import { Alert, Avatar, Button, Divider, List, Tabs, Typography } from 'antd';
 const { Text } = Typography;
 import DroppableArea from './DroppableArea';
 import DraggableStatus from './DraggableStatus';
+import EditTask from './EditTask';
+import { useState } from 'react';
 
-const ProjectTask = ({ task }) => {
+const ProjectTask = ({ task, projectId }) => {
     const teamMembers = useTeamMembersStore((state) => state.members);
     const updateTask = useTasksStore((state) => state.updateTask)
     const assignees = teamMembers.filter(member => task.assignees.indexOf(member.id) !== -1);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleDrop = (newStatus) => {
         if (newStatus === task.status || task.markedCompleted) return;
@@ -101,8 +104,29 @@ const ProjectTask = ({ task }) => {
                                 <Divider plain>OR</Divider>
 
                                 <div className='flex gap-2'>
-                                    <Button type='primary' size='small'>Edit This Task</Button>
-                                    <Button onClick={markAsCompleted} disabled={task.markedCompleted} type='primary' size='small'>Mark As Completed</Button>
+                                    <Button
+                                        type='primary'
+                                        size='small'
+                                        onClick={() => setIsModalOpen(true)}
+                                    >
+                                        Edit This Task
+                                    </Button>
+
+                                    <Button
+                                        onClick={markAsCompleted}
+                                        disabled={task.markedCompleted}
+                                        type='primary'
+                                        size='small'
+                                    >
+                                        Mark As Completed
+                                    </Button>
+
+                                    <EditTask
+                                        oldTask={task}
+                                        open={isModalOpen}
+                                        projectId={projectId}
+                                        close={() => setIsModalOpen(false)}
+                                    />
                                 </div>
                             </div>
                         )
@@ -113,7 +137,7 @@ const ProjectTask = ({ task }) => {
     )
 }
 
-const ProjectTasksDisplay = ({ tasks }) => {
+const ProjectTasksDisplay = ({ tasks, projectId }) => {
 
     if (tasks.length === 0) {
         return <Typography.Text type='danger'>Nothing found!</Typography.Text>
@@ -121,7 +145,7 @@ const ProjectTasksDisplay = ({ tasks }) => {
 
     return (
         <div className='flex flex-col gap-6'>
-            {tasks.sort((a, b) => b.deadline - a.deadline).map(task => <ProjectTask key={task.id} task={task} />)}
+            {tasks.sort((a, b) => b.deadline - a.deadline).map(task => <ProjectTask key={task.id} task={task} projectId={projectId}/>)}
         </div>
     );
 };

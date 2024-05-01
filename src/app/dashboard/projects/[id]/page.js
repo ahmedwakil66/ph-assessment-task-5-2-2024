@@ -84,12 +84,11 @@ const ProjectDetailsPage = ({ params }) => {
                 <AddNewTask projectId={params.id}/>
             </div>
             <SetInitialTasks initialTasks={tasks} teamMembers={teamMembers} />
-            <ProjectTasks allTasks={tasks} />
+            <ProjectTasks allTasks={tasks} projectId={params.id}/>
 
             {/* Recent Activities */}
             <br /> <br />
             <ProjectRecentActivities recentActivities={recentActivities} />
-
 
         </div>
     );
