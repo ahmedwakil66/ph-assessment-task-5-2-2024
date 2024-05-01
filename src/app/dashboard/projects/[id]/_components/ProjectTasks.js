@@ -21,6 +21,7 @@ const ProjectTasks = ({ defaultTasks }) => {
     return (
         <div>
             <Input
+                allowClear
                 placeholder="Search by task ID"
                 prefix={<SearchOutlined />}
                 value={searchKey}

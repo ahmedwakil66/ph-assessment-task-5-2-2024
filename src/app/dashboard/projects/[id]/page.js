@@ -5,6 +5,7 @@ import Image from 'next/image';
 import ProjectRecentActivities from './_components/ProjectRecentActivities';
 import ProjectTasks from './_components/ProjectTasks';
 import SetInitialTasks from './_components/SetInitialTasks';
+import AddNewTask from './_components/AddNewTask';
 
 const fetcher = async (id) => {
     const response = await fetch(`/api/data?projectId=${id}`);
@@ -71,10 +72,13 @@ const ProjectDetailsPage = ({ params }) => {
 
             {/* Project Tasks */}
             <br />
-            <Typography.Title level={4}>
-                Project Tasks
-            </Typography.Title>
-            <SetInitialTasks initialTasks={tasks} teamMembers={teamMembers}/>
+            <div className='flex justify-between gap-5'>
+                <Typography.Title level={4}>
+                    Project Tasks
+                </Typography.Title>
+                <AddNewTask />
+            </div>
+            <SetInitialTasks initialTasks={tasks} teamMembers={teamMembers} />
             <ProjectTasks defaultTasks={tasks} />
 
             {/* Recent Activities */}
