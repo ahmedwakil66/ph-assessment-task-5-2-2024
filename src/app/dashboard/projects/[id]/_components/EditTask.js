@@ -7,6 +7,12 @@ import { customAlphabet } from 'nanoid';
 const nanoid = customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 6);
 const mockLoading = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
+// This component has made it possible to Edit a task. Whenever
+// a user click on Edit task button this component opens editing
+// panel in a modal. This component is also responsible to mutate
+// tanstack's cache so that the edited data persists, 
+// until page reloads or 1 hour passes, whichever happens first.
+
 const EditTask = ({ open, close, oldTask, projectId }) => {
     const queryClient = useQueryClient();
     const teamMembers = useTeamMembersStore((state) => state.members);

@@ -8,6 +8,11 @@ const { Meta } = Card;
 
 const mockDelete = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
+// This component is the project overview card with view, edit and
+// delete buttons. View button takes user to the project detail page
+// delete button deletes the project after confirmation
+// edit button does not do anything at this moment
+
 const ProjectOverviewCard = ({ project }) => {
     const router = useRouter();
     const queryClient = useQueryClient();

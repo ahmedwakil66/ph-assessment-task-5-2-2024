@@ -5,11 +5,13 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { LoadingOutlined } from '@ant-design/icons';
 
+// This is the component that makes users to sign-in first
+// to view the interactive dashboard
+
 const MonitorAuthState = () => {
     const router = useRouter();
     const path = usePathname();
     const isLoggedIn = useAuthStore((state) => state.isAuthenticated);
-    console.log('isLoggedIn', isLoggedIn);
 
     useEffect(() => {
         if (isLoggedIn) router.push('/dashboard')

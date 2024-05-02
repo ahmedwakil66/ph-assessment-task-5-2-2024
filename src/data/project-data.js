@@ -1,35 +1,43 @@
+const teamMembers = [
+    {
+        "id": "ABC11",
+        "name": "Wakil Ahmed",
+        "thumb": "https://ucarecdn.com/f9238824-18b3-4ea9-b2d0-a6d5064b6563/-/preview/500x500/",
+        "bio": "A fullstack web developer, hungry coder."
+    },
+    {
+        "id": "ABC22",
+        "name": "Mr. Labib",
+        "thumb": "https://ucarecdn.com/588ca585-1599-478a-8322-23fcca1815e4/-/preview/500x500/",
+        "bio": "A frontend web developer and experienced farmer."
+    },
+    {
+        "id": "ABC33",
+        "name": "Fahad Rahman",
+        "thumb": "https://ucarecdn.com/422c82da-e6c2-4725-a098-d40185935bdf/-/preview/500x500/",
+        "bio": "A python beginner, future css student."
+    },
+    {
+        "id": "ABC55",
+        "name": "Quazi Waliullah",
+        "thumb": "https://ucarecdn.com/a6a5c7f1-2852-4f32-8098-a971ddde8513/-/preview/500x500/",
+        "bio": "An entrepreneur, digital marketer. "
+    },
+    {
+        "id": "ABC44",
+        "name": "Al Mamun",
+        "thumb": "https://ucarecdn.com/02249bf0-0923-4b7e-aa70-afc1db47197c/-/preview/500x500/",
+        "bio": "A digital marketer and IT farm expert."
+    },
+]
+
 export const projectsData = [
     {
         "id": "1",
         "name": "ModernTech",
         "thumb": "https://ucarecdn.com/82ed5843-0168-4ee5-bc3d-46d552de1650/",
         "short_description": "A NextJs & ContentFull powered portfolio website.",
-        "teamMembers": [
-            {
-                "id": "ABC11",
-                "name": "Wakil Ahmed",
-                "thumb": "https://ucarecdn.com/f9238824-18b3-4ea9-b2d0-a6d5064b6563/-/preview/500x500/",
-                "bio": "A fullstack web developer, hungry coder."
-            },
-            {
-                "id": "ABC22",
-                "name": "Mr. Labib",
-                "thumb": "https://ucarecdn.com/588ca585-1599-478a-8322-23fcca1815e4/-/preview/500x500/",
-                "bio": "A frontend web developer and experienced farmer."
-            },
-            {
-                "id": "ABC33",
-                "name": "Fahad Rahman",
-                "thumb": "https://ucarecdn.com/422c82da-e6c2-4725-a098-d40185935bdf/-/preview/500x500/",
-                "bio": "A python beginner, future css student."
-            },
-            {
-                "id": "ABC44",
-                "name": "Al Mamun",
-                "thumb": "https://ucarecdn.com/02249bf0-0923-4b7e-aa70-afc1db47197c/-/preview/500x500/",
-                "bio": "A digital marketer and IT farm expert."
-            },
-        ],
+        "teamMembers": [...teamMembers],
         "tasks": [
             {
                 "id": "XLD545",
@@ -69,32 +77,7 @@ export const projectsData = [
         "name": "Utility Social",
         "thumb": "https://ucarecdn.com/593b71ef-74e1-43f2-802c-badb91413443/",
         "short_description": "Three in one, a graphql powered utility and social app.",
-        "teamMembers": [
-            {
-                "id": "ABC11",
-                "name": "Wakil Ahmed",
-                "thumb": "https://ucarecdn.com/f9238824-18b3-4ea9-b2d0-a6d5064b6563/-/preview/500x500/",
-                "bio": "A fullstack web developer, hungry coder."
-            },
-            {
-                "id": "ABC22",
-                "name": "Mr. Labib",
-                "thumb": "https://ucarecdn.com/588ca585-1599-478a-8322-23fcca1815e4/-/preview/500x500/",
-                "bio": "A frontend web developer and experienced farmer."
-            },
-            {
-                "id": "ABC33",
-                "name": "Fahad Rahman",
-                "thumb": "https://ucarecdn.com/422c82da-e6c2-4725-a098-d40185935bdf/-/preview/500x500/",
-                "bio": "A python beginner, future css student."
-            },
-            {
-                "id": "ABC44",
-                "name": "Al Mamun",
-                "thumb": "https://ucarecdn.com/02249bf0-0923-4b7e-aa70-afc1db47197c/-/preview/500x500/",
-                "bio": "A digital marketer and IT farm expert."
-            },
-        ],
+        "teamMembers": [...teamMembers],
         "tasks": [
             {
                 "id": "XLD545",
@@ -134,32 +117,7 @@ export const projectsData = [
         "name": "Talk Active",
         "thumb": "https://ucarecdn.com/11b9c438-d3de-4b87-a89d-c780c002e68c/",
         "short_description": "A full stack web-based chat application with friend list support.",
-        "teamMembers": [
-            {
-                "id": "ABC11",
-                "name": "Wakil Ahmed",
-                "thumb": "https://ucarecdn.com/f9238824-18b3-4ea9-b2d0-a6d5064b6563/-/preview/500x500/",
-                "bio": "A fullstack web developer, hungry coder."
-            },
-            {
-                "id": "ABC22",
-                "name": "Mr. Labib",
-                "thumb": "https://ucarecdn.com/588ca585-1599-478a-8322-23fcca1815e4/-/preview/500x500/",
-                "bio": "A frontend web developer and experienced farmer."
-            },
-            {
-                "id": "ABC33",
-                "name": "Fahad Rahman",
-                "thumb": "https://ucarecdn.com/422c82da-e6c2-4725-a098-d40185935bdf/-/preview/500x500/",
-                "bio": "A python beginner, future css student."
-            },
-            {
-                "id": "ABC44",
-                "name": "Al Mamun",
-                "thumb": "https://ucarecdn.com/02249bf0-0923-4b7e-aa70-afc1db47197c/-/preview/500x500/",
-                "bio": "A digital marketer and IT farm expert."
-            },
-        ],
+        "teamMembers": [...teamMembers],
         "tasks": [
             {
                 "id": "XLD545",
@@ -199,32 +157,7 @@ export const projectsData = [
         "name": "Pro-Active Fitness",
         "thumb": "https://ucarecdn.com/adcc2ae9-8a96-4f96-9aef-b1289a15d937/",
         "short_description": "A full stack single page sports school web application with role-based dashboards.",
-        "teamMembers": [
-            {
-                "id": "ABC11",
-                "name": "Wakil Ahmed",
-                "thumb": "https://ucarecdn.com/f9238824-18b3-4ea9-b2d0-a6d5064b6563/-/preview/500x500/",
-                "bio": "A fullstack web developer, hungry coder."
-            },
-            {
-                "id": "ABC22",
-                "name": "Mr. Labib",
-                "thumb": "https://ucarecdn.com/588ca585-1599-478a-8322-23fcca1815e4/-/preview/500x500/",
-                "bio": "A frontend web developer and experienced farmer."
-            },
-            {
-                "id": "ABC33",
-                "name": "Fahad Rahman",
-                "thumb": "https://ucarecdn.com/422c82da-e6c2-4725-a098-d40185935bdf/-/preview/500x500/",
-                "bio": "A python beginner, future css student."
-            },
-            {
-                "id": "ABC44",
-                "name": "Al Mamun",
-                "thumb": "https://ucarecdn.com/02249bf0-0923-4b7e-aa70-afc1db47197c/-/preview/500x500/",
-                "bio": "A digital marketer and IT farm expert."
-            },
-        ],
+        "teamMembers": [...teamMembers],
         "tasks": [
             {
                 "id": "XLD545",
@@ -264,32 +197,7 @@ export const projectsData = [
         "name": "Play Time",
         "thumb": "https://ucarecdn.com/01640ac3-492e-4670-bcae-4430a99a1432/-/preview/1000x562/",
         "short_description": "Welcome to 'Play Time', the ultimate haven for endless fun and boundless adventure.",
-        "teamMembers": [
-            {
-                "id": "ABC11",
-                "name": "Wakil Ahmed",
-                "thumb": "https://ucarecdn.com/f9238824-18b3-4ea9-b2d0-a6d5064b6563/-/preview/500x500/",
-                "bio": "A fullstack web developer, hungry coder."
-            },
-            {
-                "id": "ABC22",
-                "name": "Mr. Labib",
-                "thumb": "https://ucarecdn.com/588ca585-1599-478a-8322-23fcca1815e4/-/preview/500x500/",
-                "bio": "A frontend web developer and experienced farmer."
-            },
-            {
-                "id": "ABC33",
-                "name": "Fahad Rahman",
-                "thumb": "https://ucarecdn.com/422c82da-e6c2-4725-a098-d40185935bdf/-/preview/500x500/",
-                "bio": "A python beginner, future css student."
-            },
-            {
-                "id": "ABC44",
-                "name": "Al Mamun",
-                "thumb": "https://ucarecdn.com/02249bf0-0923-4b7e-aa70-afc1db47197c/-/preview/500x500/",
-                "bio": "A digital marketer and IT farm expert."
-            },
-        ],
+        "teamMembers": [...teamMembers],
         "tasks": [
             {
                 "id": "XLD545",

@@ -25,18 +25,21 @@ const ProjectDetailsPage = ({ params }) => {
     );
 
     if (isLoading) return <p>Loading...</p>
-    if (isError || (data && data.status !== 'success')) return <p>Error fetching data</p>
+    if (isError || (data && data.status !== 'success')) return (
+        <Typography.Text type='danger'>Error fetching data</Typography.Text>
+    )
 
     const { name, thumb, description, technologies, other_technologies, teamMembers, tasks, recentActivities } = data.data;
 
     return (
         <div className='max-w-3xl mx-auto'>
+            {/* Project Name */}
             <Typography.Title level={2} className='text-center'>
                 {name}
             </Typography.Title>
 
             <br />
-
+            {/* Project Thumbnail */}
             <Image
                 alt={name}
                 src={thumb}
@@ -46,7 +49,7 @@ const ProjectDetailsPage = ({ params }) => {
             />
 
             <br />
-
+            {/* Project Descriptions */}
             <Typography.Title level={4}>
                 What is this project about?
             </Typography.Title>
@@ -81,10 +84,10 @@ const ProjectDetailsPage = ({ params }) => {
                 <Typography.Title level={4}>
                     Project Tasks
                 </Typography.Title>
-                <AddNewTask projectId={params.id}/>
+                <AddNewTask projectId={params.id} />
             </div>
             <SetInitialTasks initialTasks={tasks} teamMembers={teamMembers} />
-            <ProjectTasks allTasks={tasks} projectId={params.id}/>
+            <ProjectTasks allTasks={tasks} projectId={params.id} />
 
             {/* Recent Activities */}
             <br /> <br />

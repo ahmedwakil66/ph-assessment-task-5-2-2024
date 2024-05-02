@@ -23,8 +23,6 @@ const DashboardLayout = ({ children }) => {
                     collapsedWidth={40}
                     collapsible
                     className='relative'
-                // collapsed={collapsed}
-                // trigger={<div>Button</div>}
                 >
                     <div className="demo-logo-vertical h-1" />
                     <Menu

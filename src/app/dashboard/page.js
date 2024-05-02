@@ -10,6 +10,9 @@ const fetcher = async() => {
     return response.json();
 }
 
+// This is the main dashboard page. Currently it shows
+// all projects in a grid.
+
 const DashboardPage = () => {
     const {isLoading, isError, data} = useQuery('projects', fetcher, { staleTime: 3600000, cacheTime: 3600000 });
 

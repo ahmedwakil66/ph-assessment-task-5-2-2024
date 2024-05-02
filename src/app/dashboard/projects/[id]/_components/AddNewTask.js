@@ -10,6 +10,12 @@ import { useMutation, useQueryClient } from 'react-query';
 const nanoid = customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 6);
 const mockLoading = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
+// This component is used to add a new task. Whenever
+// a user click on add task button this component opens editing
+// panel in a modal. This component is also responsible to mutate
+// tanstack's cache so that the edited data persists, 
+// until page reloads or 1 hour passes, whichever happens first.
+
 const AddNewTask = ({ projectId }) => {
     const queryClient = useQueryClient();
     // const addNewTask = useTasksStore((state) => state.addNewTask);

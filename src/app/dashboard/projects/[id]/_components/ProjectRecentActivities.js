@@ -1,6 +1,8 @@
 import { List, Typography } from 'antd';
 import React from 'react';
 
+// This component shows all recent activities of a project
+
 const ProjectRecentActivities = ({ recentActivities }) => {
     
     return (

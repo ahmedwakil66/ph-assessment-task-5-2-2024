@@ -3,6 +3,9 @@ import { SettingOutlined, PoweroffOutlined } from '@ant-design/icons';
 import { Button, Dropdown, Space } from 'antd';
 import useAuthStore from '@/store/useAuthStore';
 
+// This component clears any auth data, causing
+// user to be logged out 
+
 const LogOutBtn = () => {
     const revokeAuth = useAuthStore((state) => state.revokeAuth);
     return (
