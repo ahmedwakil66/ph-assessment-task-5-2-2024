@@ -6,6 +6,7 @@ import ProjectRecentActivities from './_components/ProjectRecentActivities';
 import ProjectTasks from './_components/ProjectTasks';
 import SetInitialTasks from './_components/SetInitialTasks';
 import AddNewTask from './_components/AddNewTask';
+import { memo } from 'react';
 
 const fetcher = async (id) => {
     const response = await fetch(`/api/data?projectId=${id}`);
@@ -17,7 +18,7 @@ const fetcher = async (id) => {
 // Because of this rule, from here I will have to mix tanstack and zustand
 // which might make the code complex and less performant.
 
-const ProjectDetailsPage = ({ params }) => {
+const ProjectDetailsPage = memo(function ProjectDetailsPage ({ params }) {
     const { isLoading, isError, data } = useQuery(
         ['projects', params.id],
         () => fetcher(params.id),
@@ -95,6 +96,6 @@ const ProjectDetailsPage = ({ params }) => {
 
         </div>
     );
-};
+})
 
 export default ProjectDetailsPage;

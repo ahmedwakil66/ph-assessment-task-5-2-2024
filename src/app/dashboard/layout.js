@@ -1,22 +1,15 @@
 'use client';
-
-import React, { useState } from 'react';
 import Providers from '@/providers/Providers';
 import HeaderDropdown from './_components/HeaderDropdown';
-import { ProjectOutlined } from '@ant-design/icons';
-import { Layout, Menu, theme } from 'antd';
+import { Layout } from 'antd';
 import { Footer } from 'antd/es/layout/layout';
-import { useRouter } from 'next/navigation';
+import SideMenu from './_components/SideMenu';
 const { Header, Sider, Content } = Layout;
 
 const DashboardLayout = ({ children }) => {
-    const router = useRouter();
-    const [collapsed, setCollapsed] = useState(true);
-    const {
-        token: { colorBgContainer, borderRadiusLG },
-    } = theme.useToken();
 
     return (
+        <Providers>
             <Layout>
                 <Sider
                     breakpoint='md'
@@ -24,51 +17,31 @@ const DashboardLayout = ({ children }) => {
                     collapsible
                     className='relative'
                 >
-                    <div className="demo-logo-vertical h-1" />
-                    <Menu
-                        theme="dark"
-                        mode="inline"
-                        className='sticky top-0'
-                        defaultSelectedKeys={['1']}
-                        items={[
-                            {
-                                key: '1',
-                                icon: <ProjectOutlined />,
-                                label: 'Projects Overview',
-                                onClick: () => router.push('/dashboard'),
-                            },
-                        ]}
-                    />
+                    <div className="demo-logo-vertical h-14" />
+                    <SideMenu />
                 </Sider>
 
-                <Providers>
-                    <Layout>
-                        <Header
-                            className='!px-2 flex justify-end'
-                            style={{
-                                background: colorBgContainer,
-                            }}
-                        >
-                            <HeaderDropdown />
-                        </Header>
 
-                        <Content
-                            className='mx-3 md:mx-4 my-6 px-3 md:px-6 py-6 !min-h-[calc(100vh-180px)]'
-                            style={{
-                                background: colorBgContainer,
-                                borderRadius: borderRadiusLG,
-                            }}
-                        >
-                            {children}
-                        </Content>
+                <Layout>
+                    <Header
+                        className='!px-2 flex justify-end'
+                    >
+                        <HeaderDropdown />
+                    </Header>
 
-                        <Footer className='text-center'>
-                            SKILL ASSESSMENT TASK ©{new Date().getFullYear()} Created by
-                            <a href="https://kwa.netlify.app"> Kazi Wakil Ahmed</a>
-                        </Footer>
-                    </Layout>
-                </Providers>
+                    <Content
+                        className='mx-3 md:mx-4 my-6 px-3 md:px-6 py-6 !min-h-[calc(100vh-180px)]'
+                    >
+                        {children}
+                    </Content>
+
+                    <Footer className='text-center'>
+                        SKILL ASSESSMENT TASK ©{new Date().getFullYear()} Created by
+                        <a href="https://kwa.netlify.app"> Kazi Wakil Ahmed</a>
+                    </Footer>
+                </Layout>
             </Layout>
+        </Providers>
     );
 };
 

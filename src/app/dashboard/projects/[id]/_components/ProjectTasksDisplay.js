@@ -1,14 +1,15 @@
 'use client';
 import useTeamMembersStore from '@/store/useTeamMembersStore';
 import useTasksStore from '@/store/useTasksStore';
-import { Alert, Avatar, Button, Divider, List, Tabs, Typography } from 'antd';
+import { Alert, Avatar, Button, Divider, List, Tabs, Typography, theme } from 'antd';
 const { Text } = Typography;
 import DroppableArea from './DroppableArea';
 import DraggableStatus from './DraggableStatus';
 import EditTask from './EditTask';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 
 const ProjectTask = ({ task, projectId }) => {
+    const { token } = theme.useToken();
     const teamMembers = useTeamMembersStore((state) => state.members);
     const updateTask = useTasksStore((state) => state.updateTask)
     const assignees = teamMembers.filter(member => task.assignees.indexOf(member.id) !== -1);
@@ -31,7 +32,7 @@ const ProjectTask = ({ task, projectId }) => {
     }
 
     return (
-        <div className='shadow-md p-3 rounded-lg bg-slate-200'>
+        <div className='shadow-md p-3 rounded-lg' style={{ background: token['pink-1'] }}>
             {task.markedCompleted && (
                 <Alert message="Oww! We finished this :)" type="success" className='!mb-2' showIcon />
             )}
@@ -137,7 +138,7 @@ const ProjectTask = ({ task, projectId }) => {
     )
 }
 
-const ProjectTasksDisplay = ({ tasks, projectId }) => {
+const ProjectTasksDisplay = memo(function ProjectTasksDisplay({ tasks, projectId }) {
 
     if (tasks.length === 0) {
         return <Typography.Text type='danger'>Nothing found!</Typography.Text>
@@ -145,9 +146,9 @@ const ProjectTasksDisplay = ({ tasks, projectId }) => {
 
     return (
         <div className='flex flex-col gap-6'>
-            {tasks.sort((a, b) => b.deadline - a.deadline).map(task => <ProjectTask key={task.id} task={task} projectId={projectId}/>)}
+            {tasks.sort((a, b) => b.deadline - a.deadline).map(task => <ProjectTask key={task.id} task={task} projectId={projectId} />)}
         </div>
     );
-};
+});
 
 export default ProjectTasksDisplay;

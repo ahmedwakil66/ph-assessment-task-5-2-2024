@@ -1,14 +1,24 @@
 'use client';
-import React from 'react';
-import { QueryClient, QueryClientProvider  } from 'react-query';
+
+import useThemeStore from '@/store/useThemeStore';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ConfigProvider, theme } from "antd";
 
 // Create a client
 const queryClient = new QueryClient()
 
-const Providers = ({children}) => {
+const Providers = ({ children }) => {
+    const isDarkMode = useThemeStore((state) => state.isDarkMode);
+
     return (
         <QueryClientProvider client={queryClient}>
-         {children}   
+            <ConfigProvider
+                theme={{
+                    algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm
+                }}
+            >
+                {children}
+            </ConfigProvider>
         </QueryClientProvider>
     );
 };

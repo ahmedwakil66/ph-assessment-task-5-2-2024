@@ -1,9 +1,9 @@
 import { List, Typography } from 'antd';
-import React from 'react';
+import React, { memo } from 'react';
 
 // This component shows all recent activities of a project
 
-const ProjectRecentActivities = ({ recentActivities }) => {
+const ProjectRecentActivities = memo(function ProjectRecentActivities ({ recentActivities }) {
     
     return (
         <>
@@ -24,6 +24,6 @@ const ProjectRecentActivities = ({ recentActivities }) => {
             />
         </>
     );
-};
+});
 
 export default ProjectRecentActivities;

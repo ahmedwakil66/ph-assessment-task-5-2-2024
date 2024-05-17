@@ -2,7 +2,7 @@
 
 import { Button, DatePicker, Input, Select, Typography } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import useTasksStore from '@/store/useTasksStore';
 import ProjectTasksDisplay from './ProjectTasksDisplay';
 import useTeamMembersStore from '@/store/useTeamMembersStore';
@@ -10,7 +10,7 @@ import useTeamMembersStore from '@/store/useTeamMembersStore';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
 
-const ProjectTasks = ({ allTasks, projectId }) => {
+const ProjectTasks = memo(function ProjectTasks ({ projectId }) {
     const tasks = useTasksStore((state) => state.tasks);
     const teamMembers = useTeamMembersStore((state) => state.members);
     const [showState, setShowState] = useState('');
@@ -138,6 +138,6 @@ const ProjectTasks = ({ allTasks, projectId }) => {
             </DndProvider>
         </div>
     );
-};
+})
 
 export default ProjectTasks;
