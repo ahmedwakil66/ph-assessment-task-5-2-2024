@@ -2,7 +2,7 @@
 
 import { Button, DatePicker, Input, Select, Typography } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
-import { memo, useEffect, useState } from 'react';
+import { memo, startTransition, useEffect, useState } from 'react';
 import useTasksStore from '@/store/useTasksStore';
 import ProjectTasksDisplay from './ProjectTasksDisplay';
 import useTeamMembersStore from '@/store/useTeamMembersStore';
@@ -10,7 +10,7 @@ import useTeamMembersStore from '@/store/useTeamMembersStore';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
 
-const ProjectTasks = memo(function ProjectTasks ({ projectId }) {
+const ProjectTasks = memo(function ProjectTasks({ projectId }) {
     const tasks = useTasksStore((state) => state.tasks);
     const teamMembers = useTeamMembersStore((state) => state.members);
     const [showState, setShowState] = useState('');
@@ -31,7 +31,7 @@ const ProjectTasks = memo(function ProjectTasks ({ projectId }) {
 
     useEffect(() => {
         const byId = tasks.filter(task => task.id === searchKey) || [];
-        setSearchedTasks([...byId])
+        startTransition(() => { setSearchedTasks([...byId]) });
     }, [searchKey, tasks]);
 
     const isSearching = searchKey.length > 0;
@@ -53,15 +53,17 @@ const ProjectTasks = memo(function ProjectTasks ({ projectId }) {
             return;
         };
         setShowState('FILTER');
-        if (filterType === 'status') {
-            setFilteredTasks(tasks.filter(task => task.status === filterValue));
-        }
-        else if (filterType === 'date') {
-            setFilteredTasks(tasks.filter(task => task.deadline <= filterValue))
-        }
-        else if (filterType === 'assignee') {
-            setFilteredTasks(tasks.filter(task => task.assignees.indexOf(filterValue) !== -1))
-        }
+        startTransition(() => {
+            if (filterType === 'status') {
+                setFilteredTasks(tasks.filter(task => task.status === filterValue));
+            }
+            else if (filterType === 'date') {
+                setFilteredTasks(tasks.filter(task => task.deadline <= filterValue))
+            }
+            else if (filterType === 'assignee') {
+                setFilteredTasks(tasks.filter(task => task.assignees.indexOf(filterValue) !== -1))
+            }
+        })
     }
 
     // return statement
